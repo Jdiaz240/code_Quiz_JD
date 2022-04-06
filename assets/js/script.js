@@ -18,9 +18,25 @@ var feedBackEl = document.getElementById("feedback");
 
 var questions = [
     {
-        title: "This is a question?",
-        choices: ["A", "B", "C", "D"],
-        answer: "A"
+        title: "What element can sub-zero control?",
+        choices: ["Ice", "Fire", "Earth", "Air"],
+        answer: "Ice",
+
+        title: "What is Scorpion's catchphrase?",
+        choices: ["PASS THE BUTTER!", "SMILE!", "WHO LIVES IN PINEAPPLE UNDER THE SEA?", "GET OVER HERE!"],
+        answer: "GET OVER HERE",
+
+        title: "Who does Johnny Cage marry?",
+        choices: ["yo mama", "Kim Kardashian", "Sonya Blade", "Himself"],
+        answer: "Sonya Blade",
+
+        title: "How many arms does Goro have?",
+        choices: ["1", "2", "10", "4"],
+        answer: "1",
+
+        title: "What mythical creature is the symbol of Mortal Kombat?",
+        choices: ["Nine-tailed fox", "Griffon", "Cerberus", "Dragon"],
+        answer: "Dragon",
     }
 ]
 
