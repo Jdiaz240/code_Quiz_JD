@@ -13,6 +13,7 @@ var submitBtn = document.getElementById("submit");
 var startBtn = document.getElementById("start");
 var initialsEl = document.getElementById("initials");
 var feedBackEl = document.getElementById("feedback");
+var answer;
 // var imgEl = document.getElementById(".img");
 // questions for the quiz
 
@@ -72,19 +73,26 @@ function getQuestions() {
     // update the code question title with current code
     document.querySelector("#question").textContent = currentQuestion.title;
     // clear out old question choices
-    document.querySelector("#answers").textContent = "";
+    document.querySelector("#choices").textContent = "";
     // we can loop over the choices using forEach
     currentQuestion.choices.forEach(function(answer){
         var button = document.createElement("button")
         button.innerHTML = answer
-        document.querySelector("#answers").append(button);
+        document.querySelector("#choices").append(button);
     });
+    document.getElementById("choices").addEventListener("click", clickQuestions);
     // attach click event to listener
     // display the choice on the page
 }
 
+
+
+
 // question button clicks
 function clickQuestions() {
+    if ("click" == answer)
+    console.log(true);
+
     // error handling needed for incorrect answer to question
     // and add the time deduction
     // display the new time once deducted
