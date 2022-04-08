@@ -1,7 +1,7 @@
 // Variables to keep track of time
 var questionsIndex = 0;
 // indexed at 0
-var time = questions.length * 15;
+
 // Allows you to keep a timer and score for your quiz
 var timerID;
 
@@ -39,15 +39,20 @@ var questions = [
         answer: "Dragon",
     }
 ]
-
+// set up overall amount of time
+var time = questions.length * 15;
 // Start quiz function
 function beginQuiz() {
     // hide the start screen during the quiz
     var startQuizEl = document.getElementById("start");
-    startScreenEl.setAttribute("class", "hide");
+    startQuizEl.setAttribute("class", "hide");
     // make the questions appear on the page
     questionsEl.removeAttribute("class");
     // start the time
+    timerID = setInterval(function() {
+        time--;
+        // show the time on the div so that it will show
+    },1000)
     // show starting time on the page
     getQuestions;
 }
@@ -108,8 +113,8 @@ function enterBtnEvent() {
 }
 
 // user clicks button to submit their initials
-submitBtn.onclick = saveHighScores;
+// submitBtn.onclick = saveHighScores;
 // user clicks to begin the quiz
 startBtn.onclick = beginQuiz;
 // this checks if the user hit enter for their initials
-initialsEl.onkeyup = enterBtnEvent;
+// initialsEl.onkeyup = enterBtnEvent;
