@@ -2,13 +2,14 @@
 var questionsIndex = 0;
 // indexed at 0
 
+
 // Allows you to keep a timer and score for your quiz
 var timerID;
 
 // variables to help Travese the DOM
-var quesionsEl = document.getElementById("questions");
+// var quesionsEl = document.getElementById("questions");
 var timerEl = document.getElementById("time");
-var choicesEl = document.getElementById("choices");
+// var choicesEl = document.getElementById("choices");
 var submitBtn = document.getElementById("submit");
 var startBtn = document.getElementById("start");
 var initialsEl = document.getElementById("initials");
@@ -21,27 +22,27 @@ var questions = [
     {
         title: "What element can sub-zero control?",
         choices: ["Ice", "Fire", "Earth", "Air"],
-        answer: "Ice",
+        answer: "Ice"
     },
     {
         title: "What is Scorpion's catchphrase?",
         choices: ["PASS THE BUTTER!", "SMILE!", "WHO LIVES IN PINEAPPLE UNDER THE SEA?", "GET OVER HERE!"],
-        answer: "GET OVER HERE",
+        answer: "GET OVER HERE!"
     },
     {
         title: "Who does Johnny Cage marry?",
         choices: ["yo mama", "Kim Kardashian", "Sonya Blade", "Himself"],
-        answer: "Sonya Blade",
+        answer: "Sonya Blade"
     },
     {
         title: "How many arms does Goro have?",
         choices: ["1", "2", "10", "4"],
-        answer: "1",
+        answer: "4"
     },
     {
         title: "What mythical creature is the symbol of Mortal Kombat?",
         choices: ["Nine-tailed fox", "Griffon", "Cerberus", "Dragon"],
-        answer: "Dragon",
+        answer: "Dragon"
     }
 ]
 // set up overall amount of time
@@ -53,15 +54,15 @@ function beginQuiz() {
     startQuizEl.setAttribute("class", "hide");
     // make the questions appear on the page
     // start the time
-    timerID = setInterval(function() {
+    timerID = setInterval(function () {
         time--;
-    // show the time on the div so that it will show
-    document.querySelector("#timer").textContent=time;
+        // show the time on the div so that it will show
+        document.querySelector("#timer").textContent = time;
         if (time == 0) {
             clearInterval(timerID)
-            document.querySelector("#timer").textContent="Game Over!";
+            document.querySelector("#timer").textContent = "Game Over!";
         }
-    },1000)
+    }, 1000)
     // show starting time on the page
     getQuestions();
 }
@@ -75,37 +76,43 @@ function getQuestions() {
     // clear out old question choices
     document.querySelector("#choices").textContent = "";
     // we can loop over the choices using forEach
-    currentQuestion.choices.forEach(function(answer){
+    currentQuestion.choices.forEach(function (answer) {
         var button = document.createElement("button")
         button.innerHTML = answer
-        document.querySelector("#choices").append(button);
+        document.querySelector("#choices").appendChild(button);
     });
     document.getElementById("choices").addEventListener("click", clickQuestions);
     // attach click event to listener
     // display the choice on the page
-}
-
-
-
+};
 
 // question button clicks
-function clickQuestions() {
-    if ("click" == answer)
-    console.log(true);
-
+function clickQuestions(event) {
+    var userChoice = event.target.textContent
+    if (userChoice == questions[questionsIndex].answer) {
+        var right = document.createElement("p")
+        right.innerHTML = "You're Cultured!"
+        feedBackEl.appendChild(right);
+    } else {
+        var wrong = document.createElement("p")
+        wrong.innerHTML = "Nice Try!"
+        feedBackEl.appendChild(wrong);
+    }
+    getQuestions(questionsIndex++);
     // error handling needed for incorrect answer to question
     // and add the time deduction
     // display the new time once deducted
     // flash the wrong/right feedback on the page under the questions
     // move to the next question
     // check if we're finished asking all the questions
-}
+};
 
 // end the quiz
 function endTheQuiz() {
     // stop the timer
-    clearInterval(timerId);
+    clearInterval(timerID);
     // show the final screen
+    
     // show final score
     // hide screen
 }
@@ -116,7 +123,7 @@ function clockCountDown() {
     time--;
     timerEl.textContent = time;
     // check if the user is out of time
-    if (time <=0) {
+    if (time <= 0) {
         endTheQuiz();
     }
 
